@@ -102,13 +102,28 @@ export default function SubredditComponent({
                 {subredditList.map((obj, i) => {
                   return (
                     <tr key={i}>
-                      <td onClick={handle_subredditFilter} data-subreddit={obj.val0}>
+                      <td
+                        id={'reddit-' + `${i}` + '0'}
+                        data-redditid={'reddit-' + `${i}` + '0'}
+                        onClick={handle_subredditFilter}
+                        data-subreddit={obj.val0}
+                      >
                         {obj.val0}
                       </td>
-                      <td onClick={handle_subredditFilter} data-subreddit={obj.val1}>
+                      <td
+                        id={'reddit-' + `${i}` + '1'}
+                        data-redditid={'reddit-' + `${i}` + '1'}
+                        onClick={handle_subredditFilter}
+                        data-subreddit={obj.val1}
+                      >
                         {obj.val1}
                       </td>
-                      <td onClick={handle_subredditFilter} data-subreddit={obj.val2}>
+                      <td
+                        id={'reddit-' + `${i}` + '2'}
+                        data-redditid={'reddit-' + `${i}` + '2'}
+                        onClick={handle_subredditFilter}
+                        data-subreddit={obj.val2}
+                      >
                         {obj.val2}
                       </td>
                     </tr>
@@ -120,16 +135,16 @@ export default function SubredditComponent({
           <div className='subredditList-item'>
             <h4>LISTING</h4>
             <ul>
-              <li onClick={handle_subredditFilter} data-list={'hot'}>
+              <li id={'list-0'} data-listid={'list-0'} onClick={handle_subredditFilter} data-list={'hot'}>
                 Hot
               </li>
-              <li onClick={handle_subredditFilter} data-list={'new'}>
+              <li id={'list-1'} data-listid={'list-1'} onClick={handle_subredditFilter} data-list={'new'}>
                 New
               </li>
-              <li onClick={handle_subredditFilter} data-list={'top'}>
+              <li id={'list-2'} data-listid={'list-2'} onClick={handle_subredditFilter} data-list={'top'}>
                 Top
               </li>
-              <li onClick={handle_subredditFilter} data-list={'rising'}>
+              <li id={'list-3'} data-listid={'list-3'} onClick={handle_subredditFilter} data-list={'rising'}>
                 Rising
               </li>
             </ul>

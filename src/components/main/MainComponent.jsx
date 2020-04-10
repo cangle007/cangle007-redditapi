@@ -40,6 +40,7 @@ export default class MainComponent extends Component {
     let filter_element = document.querySelector('.filter-item');
     let hot_element = document.getElementById('hot-container');
     let top_element = document.getElementById('top-container');
+
     let filter_btn_element = document.querySelector('#filter-btn');
     let subredditList_element = document.getElementById('subredditList-container');
 
@@ -72,11 +73,39 @@ export default class MainComponent extends Component {
   };
 
   handle_subredditFilter = event => {
-    let { list, subreddit } = event.currentTarget.dataset;
+    let { list, subreddit, redditid, listid } = event.currentTarget.dataset;
+    let { subredditList } = this.props;
+
+    //to handle hightligh/unhightligh
 
     if (list) {
+      for (let j = 0; j < 4; j++) {
+        let id = 'list-' + `${j}`;
+        let listid_element = document.getElementById(id);
+        if (id === listid) {
+          listid_element.style.background = 'var(--header-bg-color)';
+          listid_element.style.color = 'white';
+        } else {
+          listid_element.style.background = 'white';
+          listid_element.style.color = 'black';
+        }
+      }
+
       this.setState({ listSelect: list });
     } else {
+      subredditList.forEach((obj, i) => {
+        for (let j = 0; j < 3; j++) {
+          let id = 'reddit-' + `${i}` + `${j}`;
+          let redditid_element = document.getElementById(id);
+          if (id === redditid) {
+            redditid_element.style.background = 'var(--header-bg-color)';
+            redditid_element.style.color = 'white';
+          } else {
+            redditid_element.style.background = 'white';
+            redditid_element.style.color = 'black';
+          }
+        }
+      });
       this.setState({ subredditSelect: subreddit });
     }
   };
@@ -91,12 +120,14 @@ export default class MainComponent extends Component {
     let filter_element = document.querySelector('.filter-item');
     let hot_element = document.getElementById('hot-container');
     let top_element = document.getElementById('top-container');
+    let subredditList_element = document.getElementById('subredditList-container');
     let filter_btn_element = document.getElementById('filter-btn');
 
     if (current_class) {
       filter_element.style.height = '30px';
       hot_element.style.display = 'none';
       top_element.style.display = 'none';
+      subredditList_element.style.display = 'none';
     } else {
       filter_btn_element.classList.replace('filter-disable', 'filter-enable');
     }
@@ -115,7 +146,6 @@ export default class MainComponent extends Component {
       state: null
     };
 
-    console.log('filterObj ONE: ', filterObj);
     localStorage.setItem('subreddit_obj', JSON.stringify(filterObj));
     this.props.get_subReddits(filterObj);
   };
