@@ -23,9 +23,6 @@ function mapDispatchToProps(dispatch, ownProps) {
 
 const withlifecycle = lifecycle({
   /*LifeCycle: Birth/Mounting*/
-  //static getDerivedStateFromProps(props, state) {},
-
-  /*LifeCycle: Growth/Update*/
   componentDidMount() {
     this.props.get_subRedditList();
 
@@ -46,10 +43,16 @@ const withlifecycle = lifecycle({
     }
   }
 
+  /*LifeCycle: Growth/Update*/
   /*LifeCycle: Death/Unmount*/
-  // componentWillUnmount() {}
 });
 
-const connectToStore = connect(mapStateToProps, mapDispatchToProps);
+const connectToStore = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
-export default compose(connectToStore, withlifecycle)(withRouter(MainPage));
+export default compose(
+  connectToStore,
+  withlifecycle
+)(withRouter(MainPage));
