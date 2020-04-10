@@ -76,7 +76,6 @@ export default class MainComponent extends Component {
     let { subredditList } = this.props;
 
     //to handle hightligh/unhightligh
-
     if (list) {
       for (let j = 0; j < 4; j++) {
         let id = 'list-' + `${j}`;

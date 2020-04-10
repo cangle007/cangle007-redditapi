@@ -44,7 +44,7 @@ export default function SubredditComponent({
       </div>
 
       <div className='filter-item'>
-        <div id='filter-btn' className='filter-enable' onClick={handle_toggleFilter}>
+        <div id='filter-btn' className='filter-disable' onClick={handle_toggleFilter}>
           <Icon name='sliders horizontal' />
           FILTER
         </div>
@@ -95,9 +95,9 @@ export default function SubredditComponent({
             <table>
               <tbody>
                 <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                  <th />
+                  <th />
+                  <th />
                 </tr>
                 {subredditList.map((obj, i) => {
                   return (
