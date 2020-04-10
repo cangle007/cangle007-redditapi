@@ -16,24 +16,20 @@ body {
 
 #main-container {
   display: grid;
-  grid-template-columns: 1000px 300px;
+  grid-template-columns: 1000px;
   grid-template-rows: repeat(auto-fill, auto);
   grid-gap: 20px;
 
   grid-template-areas:
-    'bannerComp-item bannerComp-item'
-    'browseComp-item upComingComp-item';
+    'bannerComp-item'
+    'browseComp-item';
 
   .bannerComp-item {
     grid-area: bannerComp-item;
+    margin-left: 20px;
   }
   .browseComp-item {
     grid-area: browseComp-item;
-    margin: 20px;
-  }
-  .upComingComp-item {
-    grid-area: upComingComp-item;
-    justify-self: center;
     margin: 20px;
   }
 }

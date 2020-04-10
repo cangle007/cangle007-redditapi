@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import './scss/out/scss/categoriesComponent.css';
 import './scss/out/scss/bannerComponent.css';
 import './scss/out/scss/subredditComponent.css';
 import './scss/out/scss/loaderComponent.css';

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import SubredditComponent from './SubredditComponent';
 import BannerComponent from './BannerComponent';
 import LoaderComponent from '../others/LoaderComponent';
-import CategoriesComponent from './CategoriesComponent';
 
 export default class MainComponent extends Component {
   constructor(props) {
@@ -162,7 +161,6 @@ export default class MainComponent extends Component {
       state: null
     };
 
-    console.log('filterObj SUBMIT: ', filterObj);
     localStorage.setItem('subreddit_obj', JSON.stringify(filterObj));
     this.props.get_subReddits(filterObj);
   };
@@ -347,9 +345,6 @@ export default class MainComponent extends Component {
                 handle_toggleFilter={this.handle_toggleFilter}
                 handle_toggleIMG={this.handle_toggleIMG}
               />
-            </div>
-            <div className='upComingComp-item'>
-              <CategoriesComponent handle_toggleSidebar={this.handle_toggleSidebar} />
             </div>
           </div>
         )}
