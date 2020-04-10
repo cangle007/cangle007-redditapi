@@ -2,7 +2,7 @@
 
 ## PROJECT SUMMARY
 
-![screenshot](./src/images/app_screenshot.png?raw=true)
+![screenshot](./src/images/app_preview.png?raw=true)
 
 Cloned Reddit's frontend by using Reat-Redux
 
