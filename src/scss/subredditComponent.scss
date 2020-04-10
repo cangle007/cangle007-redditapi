@@ -1,0 +1,408 @@
+$filter-height-max: 300px;
+$filter-height-min: 30px;
+
+#subreddit-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 7px;
+  grid-template-areas:
+    'listing-item'
+    'filter-item'
+    'displayReddit-item';
+
+  .listing-item {
+    grid-area: listing-item;
+
+    ul {
+      display: grid;
+      background-color: var(--comp-bg-color);
+      box-shadow: var(--comp-box-shadow);
+      border: 1px solid rgba(black, 0.2);
+      grid-template-columns: repeat(5, 120px);
+      grid-template-rows: 50px;
+      justify-items: start;
+      align-items: center;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        cursor: pointer;
+        font-size: 18px;
+        &:hover {
+          color: orange;
+        }
+      }
+    }
+  }
+
+  .filter-item {
+    grid-area: filter-item;
+    background-color: var(--comp-bg-color);
+    box-shadow: var(--comp-box-shadow);
+    border: 1px solid rgba(black, 0.2);
+    height: $filter-height-min;
+    transition: height 0.2s;
+    font-size: 15px;
+
+    #filter-btn {
+      border-bottom: 1px solid rgba(black, 0.2);
+      padding: 5px;
+    }
+    .filter-enable {
+      user-select: none;
+      i.icon {
+        color: blue;
+      }
+      &:hover {
+        color: orange;
+        cursor: pointer;
+      }
+    }
+    .filter-disable {
+      user-select: none;
+      color: grey;
+      i.icon {
+        color: grey;
+      }
+    }
+  }
+
+  .img-expand {
+    height: auto;
+  }
+  .displayReddit-item {
+    grid-area: displayReddit-item;
+  }
+
+  .redditContent-container {
+    display: grid;
+    grid-template-columns: 160px 760px;
+    grid-template-rows: repeat(auto-fill, auto);
+    grid-gap: 10px;
+    grid-template-areas:
+      'leftContent-item rightContent-item'
+      'img-expand-item img-expand-item';
+    background-color: var(--comp-bg-color);
+    box-shadow: var(--comp-box-shadow);
+    border: 1px solid rgba(black, 0.2);
+    padding: 5px;
+
+    .leftContent-item {
+      grid-area: leftContent-item;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      border-right: 1.5px solid rgba(black, 0.2);
+
+      .ups {
+        font-size: 15px;
+        text-align: center;
+      }
+
+      .img-preview {
+        position: relative;
+        height: 100px;
+        width: 100px;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+
+    .rightContent-item {
+      grid-area: rightContent-item;
+      position: relative;
+
+      .reddit-header {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        a {
+          color: black;
+          font-size: 20px;
+        }
+      }
+      .reddit-author {
+        color: rgba(black, 0.6);
+
+        span:nth-child(-n + 2) {
+          i.icon {
+            color: var(--btn-bg-color);
+          }
+          a {
+            color: rgba(black, 0.6);
+            &:hover {
+              color: black;
+            }
+          }
+          &::after {
+            //a dot after each element
+            content: ' \00b7  ';
+          }
+        }
+        .subreddit_name_prefixed,
+        .author {
+          i.icon {
+            margin: 0;
+            padding: 0;
+          }
+          &:hover {
+            border-bottom: 1px solid rgba(black, 0.2);
+            color: black;
+            i.icon {
+              color: limegreen;
+            }
+          }
+        }
+
+        .all_awardings {
+          img {
+            margin: 0 2px 0;
+            width: 15px;
+            &:hover {
+              color: blue;
+            }
+          }
+        }
+      }
+      .reddit-socialMedia {
+        position: absolute;
+        bottom: 0%;
+
+        span:first-child {
+          color: var(--btn-bg-color);
+          i.icon {
+            margin: 0;
+          }
+          a {
+            &:hover {
+              color: black;
+            }
+          }
+        }
+
+        span:nth-child(2) {
+          a {
+            color: rgba(black, 0.6);
+            &:hover {
+              color: black;
+            }
+          }
+        }
+
+        span {
+          color: rgba(black, 0.6);
+          margin-right: 10px;
+        }
+      }
+
+      .timestamp {
+        color: rgba(black, 0.6);
+      }
+    }
+
+    .img-expand-item {
+      grid-area: img-expand-item;
+      display: none;
+      border-top: 1.5px solid rgba(black, 0.2);
+      text-align: center;
+
+      img {
+        max-width: 300px;
+        max-height: 300px;
+      }
+    }
+  }
+}
+
+#hot-container {
+  display: grid;
+  display: none;
+  grid-template-columns: repeat(2, 120px);
+  grid-template-areas: 'country-item state-item';
+  grid-gap: 50px;
+  margin: 10px;
+
+  #country-item {
+    grid-area: country-item;
+  }
+  #state-item {
+    grid-area: state-item;
+  }
+
+  .hot-dropDown {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    h4 {
+      border: none;
+      color: black;
+      width: 120px;
+      height: 30px;
+      border-bottom: 1px solid rgba(black, 0.2);
+      margin: 0;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 25%;
+        right: 20%;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid black;
+      }
+    }
+
+    div {
+      position: absolute;
+      display: none;
+      list-style-type: none;
+      min-width: 100%;
+      height: 200px;
+      background-color: white;
+      border: 1px solid rgba(black, 0.2);
+      overflow: auto; /* Enable scroll if needed */
+      padding: 0;
+      color: black;
+
+      li {
+        padding: 1px;
+        user-select: none;
+        &:hover,
+        &:focus {
+          background-color: rgba(156, 156, 156, 0.5);
+          outline: none;
+        }
+      }
+    }
+
+    .country-collapse {
+      display: none;
+    }
+    .country-expand {
+      display: block;
+    }
+    .state-collapse {
+      display: none;
+    }
+    .state-expand {
+      display: block;
+    }
+  }
+}
+
+#top-container {
+  display: grid;
+  display: none;
+  grid-template-columns: repeat(1, 120px);
+  grid-gap: 50px;
+  margin: 10px;
+
+  h4 {
+    border: none;
+    color: black;
+    width: 120px;
+    height: 30px;
+    border-bottom: 1px solid rgba(black, 0.2);
+    margin: 0;
+  }
+
+  ul {
+    cursor: pointer;
+    font-size: 15px;
+    padding: 0;
+    line-height: 2;
+    letter-spacing: var(--text-spacing-px);
+    list-style-type: none;
+
+    li {
+      &:hover {
+        color: orange;
+      }
+    }
+  }
+}
+
+#subredditList-container {
+  display: grid;
+  display: none;
+  grid-template-columns: repeat(2, auto);
+  grid-template-areas: 'subredditTable-item subredditList-item';
+  padding: 10px;
+
+  .subredditTable-item {
+    grid-area: subredditTable-item;
+
+    h4 {
+      border: none;
+      width: 140px;
+      border-bottom: 1px solid rgba(black, 0.2);
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      letter-spacing: var(--text-spacing-px);
+
+      tr {
+        td {
+          &:hover {
+            color: var(--text-hover-color);
+          }
+        }
+      }
+    }
+  }
+  .subredditList-item {
+    grid-area: subredditList-item;
+    position: relative;
+
+    h4 {
+      border: none;
+      width: 140px;
+      border-bottom: 1px solid rgba(black, 0.2);
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        width: 100%;
+        padding: 5px;
+        letter-spacing: var(--text-spacing-px);
+        &:hover {
+          color: var(--text-hover-color);
+        }
+      }
+    }
+    button {
+      height: 30px;
+      width: 100%;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      letter-spacing: var(--btn-spacing-px);
+      background-color: var(--btn-bg-color);
+      border: 0;
+      position: absolute;
+      bottom: 0;
+
+      &:hover {
+        background-color: rgba(#0079d3, 0.5);
+        transition: all 0.2s;
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+  }
+}
