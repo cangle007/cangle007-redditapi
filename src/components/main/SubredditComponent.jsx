@@ -24,7 +24,12 @@ export default function SubredditComponent({
             <Icon name='gripfire' color='red' />
             <span>Hot</span>
           </li>
-          <li onClick={handle_listing} data-list='new' data-listheader='new' color='yellow'>
+          <li
+            onClick={handle_listing}
+            data-list='new'
+            data-listheader='new'
+            color='yellow'
+          >
             <Icon name='star outline' color='yellow' />
             <span>New</span>
           </li>
@@ -55,7 +60,11 @@ export default function SubredditComponent({
             <div className='country-collapse' id='toggle-country'>
               {COUNTRIES.map((country, i) => {
                 return (
-                  <li key={i} data-country={country} onClick={handle_subredditListingFilter}>
+                  <li
+                    key={i}
+                    data-country={country}
+                    onClick={handle_subredditListingFilter}
+                  >
                     {country}
                   </li>
                 );
@@ -81,7 +90,11 @@ export default function SubredditComponent({
           <ul>
             {LIST_OF_DATE.map((date, i) => {
               return (
-                <li key={i} data-date={date.endpoint} onClick={handle_subredditListingFilter}>
+                <li
+                  key={i}
+                  data-date={date.endpoint}
+                  onClick={handle_subredditListingFilter}
+                >
                   {date.text}
                 </li>
               );
@@ -135,16 +148,36 @@ export default function SubredditComponent({
           <div className='subredditList-item'>
             <h4>LISTING</h4>
             <ul>
-              <li id={'list-0'} data-listid={'list-0'} onClick={handle_subredditFilter} data-list={'hot'}>
+              <li
+                id={'list-0'}
+                data-listid={'list-0'}
+                onClick={handle_subredditFilter}
+                data-list={'hot'}
+              >
                 Hot
               </li>
-              <li id={'list-1'} data-listid={'list-1'} onClick={handle_subredditFilter} data-list={'new'}>
+              <li
+                id={'list-1'}
+                data-listid={'list-1'}
+                onClick={handle_subredditFilter}
+                data-list={'new'}
+              >
                 New
               </li>
-              <li id={'list-2'} data-listid={'list-2'} onClick={handle_subredditFilter} data-list={'top'}>
+              <li
+                id={'list-2'}
+                data-listid={'list-2'}
+                onClick={handle_subredditFilter}
+                data-list={'top'}
+              >
                 Top
               </li>
-              <li id={'list-3'} data-listid={'list-3'} onClick={handle_subredditFilter} data-list={'rising'}>
+              <li
+                id={'list-3'}
+                data-listid={'list-3'}
+                onClick={handle_subredditFilter}
+                data-list={'rising'}
+              >
                 Rising
               </li>
             </ul>
@@ -165,7 +198,11 @@ export default function SubredditComponent({
                 </div>
                 <div className='img-preview'>
                   <img
-                    src={obj.thumbnail.hasOwnProperty('other') ? defaultIMG : obj.thumbnail.imgURL}
+                    src={
+                      obj.thumbnail.hasOwnProperty('other')
+                        ? defaultIMG
+                        : obj.thumbnail.imgURL
+                    }
                     alt={obj.thumbnail.imgURL}
                   />
                 </div>
@@ -173,7 +210,12 @@ export default function SubredditComponent({
 
               <section className='rightContent-item'>
                 <div className='reddit-header'>
-                  <a href={obj.permalink} className='permalink' target='_blank' rel='noopener noreferrer'>
+                  <a
+                    href={obj.permalink}
+                    className='permalink'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
                     {obj.title}
                   </a>
                 </div>
@@ -254,7 +296,11 @@ export default function SubredditComponent({
               </section>
 
               <section className='img-expand-item img-collapse' id={obj.thumbnail + i}>
-                {obj.url.hasOwnProperty('imgURL') ? <img src={obj.url.imgURL} alt={obj.url.imgURL} /> : ''}
+                {obj.url.hasOwnProperty('imgURL') ? (
+                  <img src={obj.url.imgURL} alt={obj.url.imgURL} />
+                ) : (
+                  ''
+                )}
               </section>
             </div>
           );

@@ -21,7 +21,9 @@ export default class MainComponent extends Component {
   handle_toggleSidebar = event => {
     event.preventDefault();
     let sidebar_element = document.getElementById('toggle-sidebar');
-    let current_class = document.getElementById('toggle-sidebar').classList.contains('close-sidebar');
+    let current_class = document
+      .getElementById('toggle-sidebar')
+      .classList.contains('close-sidebar');
 
     if (current_class) {
       sidebar_element.classList.replace('close-sidebar', 'open-sidebar');
@@ -114,7 +116,9 @@ export default class MainComponent extends Component {
   handle_subReddit = event => {
     event.preventDefault();
     let { listheader } = event.currentTarget.dataset;
-    let current_class = document.getElementById('filter-btn').classList.contains('filter-enable');
+    let current_class = document
+      .getElementById('filter-btn')
+      .classList.contains('filter-enable');
     let filter_element = document.querySelector('.filter-item');
     let hot_element = document.getElementById('hot-container');
     let top_element = document.getElementById('top-container');
@@ -232,7 +236,9 @@ export default class MainComponent extends Component {
   handle_toggleIMG = event => {
     event.preventDefault();
     let { imageid } = event.currentTarget.dataset;
-    let current_class = document.getElementById(imageid).classList.contains('img-collapse');
+    let current_class = document
+      .getElementById(imageid)
+      .classList.contains('img-collapse');
     let image_element = document.getElementById(imageid);
 
     if (current_class) {
@@ -250,7 +256,9 @@ export default class MainComponent extends Component {
   handle_countryBtn = event => {
     event.preventDefault();
     let country_element = document.getElementById('toggle-country');
-    let current_class = document.getElementById('toggle-country').classList.contains('country-collapse');
+    let current_class = document
+      .getElementById('toggle-country')
+      .classList.contains('country-collapse');
 
     if (current_class) {
       country_element.classList.replace('country-collapse', 'country-expand');
@@ -265,7 +273,9 @@ export default class MainComponent extends Component {
   handle_stateBtn = event => {
     event.preventDefault();
     let state_element = document.getElementById('toggle-state');
-    let current_class = document.getElementById('toggle-state').classList.contains('state-collapse');
+    let current_class = document
+      .getElementById('toggle-state')
+      .classList.contains('state-collapse');
 
     if (current_class) {
       state_element.classList.replace('state-collapse', 'state-expand');

@@ -1,7 +1,12 @@
 import React from 'react';
 import MainComponent from './MainComponent';
 
-export default function MainPage({ get_subReddits, subreddits, subreddits_flag, subredditList }) {
+export default function MainPage({
+  get_subReddits,
+  subreddits,
+  subreddits_flag,
+  subredditList
+}) {
   return (
     <div>
       <MainComponent

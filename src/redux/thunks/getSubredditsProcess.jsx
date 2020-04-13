@@ -1,6 +1,12 @@
 import getSubreddits from '../../api/getSubreddits';
 
-export default function getSubredditsProcess({ listing, subreddit, date, country, state }) {
+export default function getSubredditsProcess({
+  listing,
+  subreddit,
+  date,
+  country,
+  state
+}) {
   return (dispatch, getState) => {
     return getSubreddits({ listing, subreddit, date, country, state })
       .then(res => {
@@ -15,7 +21,9 @@ export default function getSubredditsProcess({ listing, subreddit, date, country
           parse.permalink = `https://www.reddit.com/${prop.permalink}`; //comment's link
           parse.ups = prop.ups >= 1000 ? (prop.ups / 1000).toFixed(1) + 'k' : prop.ups;
           parse.num_comments =
-            prop.num_comments >= 1000 ? (prop.num_comments / 1000).toFixed(1) + 'k' : prop.num_comments;
+            prop.num_comments >= 1000
+              ? (prop.num_comments / 1000).toFixed(1) + 'k'
+              : prop.num_comments;
           parse.all_awardings = prop.all_awardings.map(obj => {
             return obj['icon_url'] ? obj.icon_url : '';
           });
@@ -49,7 +57,12 @@ export default function getSubredditsProcess({ listing, subreddit, date, country
           }
 
           //Parse thumbnail
-          let rejectedStr = { self: 'self', default: 'default', nsfw: 'nsfw', spoiler: 'spoiler' };
+          let rejectedStr = {
+            self: 'self',
+            default: 'default',
+            nsfw: 'nsfw',
+            spoiler: 'spoiler'
+          };
 
           if (rejectedStr[prop.thumbnail]) {
             parse.thumbnail = { other: prop.thumbnail }; //use default img
