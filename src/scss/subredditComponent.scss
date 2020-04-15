@@ -333,8 +333,23 @@ $filter-height-min: 30px;
   display: grid;
   display: none;
   grid-template-columns: repeat(2, auto);
-  grid-template-areas: 'subredditTable-item subredditList-item';
-  padding: 10px;
+  grid-template-areas:
+    'search-item .'
+    'subredditTable-item subredditList-item';
+  padding: 5px;
+
+  .search-item {
+    grid-area: search-item;
+
+    input {
+      height: 20px;
+      border-color: orange;
+    }
+    span {
+      margin-left: 5px;
+      color: red;
+    }
+  }
 
   .subredditTable-item {
     grid-area: subredditTable-item;

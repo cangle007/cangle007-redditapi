@@ -5,11 +5,13 @@ import MainPage from '../../components/main/MainPage';
 
 import getSubredditsProcess from '../thunks/getSubredditsProcess';
 import getSubredditListProcess from '../thunks/getSubredditListProcess';
+import getSearchByValueProcess from '../thunks/getSearchByValueProcess';
 
 function mapStateToProps(state, ownProps) {
   return {
     subreddits: state.subreddits,
     subredditList: state.subredditList,
+    inputSubreddits: state.inputSubreddits,
     subreddits_flag: state.subreddits_flag
   };
 }
@@ -17,7 +19,8 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     get_subReddits: filterObj => dispatch(getSubredditsProcess(filterObj)),
-    get_subRedditList: () => dispatch(getSubredditListProcess())
+    get_subRedditList: () => dispatch(getSubredditListProcess()),
+    get_searchByValue: inputValue => dispatch(getSearchByValueProcess(inputValue))
   };
 }
 

@@ -2,7 +2,8 @@ export default function rootReducer(
   currentState = {
     subreddits: {},
     subredditList: [],
-    subreddits_flag: false
+    subreddits_flag: false,
+    searchByValue_flag: false
   },
   action
 ) {

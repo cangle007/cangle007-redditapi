@@ -1,11 +1,14 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Input } from 'semantic-ui-react';
 import { COUNTRIES, LIST_OF_DATE, USA_STATES } from '../../util/constants.jsx';
 import defaultIMG from '../../images/default_img.png';
 
 export default function SubredditComponent({
+  inputErrorMsg,
+  onChange_searchByInput,
   subreddits,
   subredditList,
+  handle_searchByInput,
   handle_countryBtn,
   handle_listing,
   handle_subReddit,
@@ -103,6 +106,20 @@ export default function SubredditComponent({
         </section>
 
         <section id='subredditList-container'>
+          <div className='search-item'>
+            <Input
+              icon='search'
+              placeholder='search subreddit'
+              size='small'
+              onChange={onChange_searchByInput}
+              onKeyDown={handle_searchByInput}
+            />
+            {subredditList.length === 0 ? (
+              <span>no subreddit found</span>
+            ) : (
+              <span>{inputErrorMsg}</span>
+            )}
+          </div>
           <div className='subredditTable-item'>
             <h4>SUBREDDIT'S LIST</h4>
             <table>

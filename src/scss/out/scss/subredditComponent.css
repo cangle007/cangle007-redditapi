@@ -225,8 +225,16 @@
   display: grid;
   display: none;
   grid-template-columns: repeat(2, auto);
-  grid-template-areas: 'subredditTable-item subredditList-item';
-  padding: 10px; }
+  grid-template-areas: 'search-item .' 'subredditTable-item subredditList-item';
+  padding: 5px; }
+  #subredditList-container .search-item {
+    grid-area: search-item; }
+    #subredditList-container .search-item input {
+      height: 20px;
+      border-color: orange; }
+    #subredditList-container .search-item span {
+      margin-left: 5px;
+      color: red; }
   #subredditList-container .subredditTable-item {
     grid-area: subredditTable-item; }
     #subredditList-container .subredditTable-item h4 {

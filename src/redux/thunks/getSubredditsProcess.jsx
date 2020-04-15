@@ -11,7 +11,7 @@ export default function getSubredditsProcess({
     return getSubreddits({ listing, subreddit, date, country, state })
       .then(res => {
         let scopes = [];
-        console.log('res', res);
+
         res.data.children.forEach((obj, i) => {
           let parse = {};
           let prop = obj.data;

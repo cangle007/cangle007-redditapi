@@ -11,26 +11,46 @@ export default class MainComponent extends Component {
       toggle_filterContents: 'expand',
       listheaderSelect: '',
       listSelect: 'hot',
-      subredditSelect: 'popular'
+      subredditSelect: 'popular',
+      searchInput: '',
+      inputErrorMsg: ''
     };
   }
 
-  /*
-    toggle the CategoriesComponent's  sidebar
-  */
-  handle_toggleSidebar = event => {
-    event.preventDefault();
-    let sidebar_element = document.getElementById('toggle-sidebar');
-    let current_class = document
-      .getElementById('toggle-sidebar')
-      .classList.contains('close-sidebar');
+  onChange_searchByInput = event => {
+    let val = event.target.value;
+    this.setState({ searchInput: val });
+  };
 
-    if (current_class) {
-      sidebar_element.classList.replace('close-sidebar', 'open-sidebar');
-    } else {
-      sidebar_element.classList.replace('open-sidebar', 'close-sidebar');
+  handle_searchByInput = event => {
+    let { searchInput } = this.state;
+
+    if (event.key === 'Enter') {
+      if (searchInput === '') {
+        this.setState({ inputErrorMsg: 'input cannot be empty' });
+      } else {
+        this.setState({ inputErrorMsg: '' });
+        this.props.get_searchByValue(searchInput);
+      }
     }
   };
+
+  /*
+    toggle the CategoriesComponent's  sidebar. NOT USED IN PRODUCTION
+  */
+  // handle_toggleSidebar = event => {
+  //   event.preventDefault();
+  //   let sidebar_element = document.getElementById('toggle-sidebar');
+  //   let current_class = document
+  //     .getElementById('toggle-sidebar')
+  //     .classList.contains('close-sidebar');
+
+  //   if (current_class) {
+  //     sidebar_element.classList.replace('close-sidebar', 'open-sidebar');
+  //   } else {
+  //     sidebar_element.classList.replace('open-sidebar', 'close-sidebar');
+  //   }
+  // };
 
   /*
     parse subreddit based on listing
@@ -330,7 +350,7 @@ export default class MainComponent extends Component {
 
   render() {
     let { subreddits, subredditList, subreddits_flag } = this.props;
-
+    let { inputErrorMsg } = this.state;
     return (
       <div>
         {!subreddits_flag ? (
@@ -342,6 +362,9 @@ export default class MainComponent extends Component {
             </div>
             <div className='browseComp-item'>
               <SubredditComponent
+                inputErrorMsg={inputErrorMsg}
+                onChange_searchByInput={this.onChange_searchByInput}
+                handle_searchByInput={this.handle_searchByInput}
                 subreddits={subreddits}
                 subredditList={subredditList}
                 handle_countryBtn={this.handle_countryBtn}
