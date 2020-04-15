@@ -17,6 +17,9 @@ export default class MainComponent extends Component {
     };
   }
 
+  /*
+    user can now search for more subreddits through input
+  */
   onChange_searchByInput = event => {
     let val = event.target.value;
     this.setState({ searchInput: val });
@@ -24,8 +27,20 @@ export default class MainComponent extends Component {
 
   handle_searchByInput = event => {
     let { searchInput } = this.state;
+    let { subredditList } = this.props;
 
     if (event.key === 'Enter') {
+      //to unhighligh all td element when enter
+      subredditList.forEach((obj, i) => {
+        for (let j = 0; j < 3; j++) {
+          let id = 'reddit-' + `${i}` + `${j}`;
+          let redditid_element = document.getElementById(id);
+          redditid_element.style.background = 'white';
+          redditid_element.style.color = 'black';
+        }
+      });
+
+      //handle error and searchByValue
       if (searchInput === '') {
         this.setState({ inputErrorMsg: 'input cannot be empty' });
       } else {
